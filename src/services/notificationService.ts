@@ -44,18 +44,8 @@ export function setupForegroundListener() {
   _foregroundListenerUnsubscribe = messaging().onMessage(async remoteMessage => {
     console.log('Foreground Message:', remoteMessage);
 
-    // Try to use notifee if available for showing a native notification
-    // try {
-    //   // dynamic require so code still works if notifee isn't installed
-    //   // eslint-disable-next-line @typescript-eslint/no-var-requires
-    //   notifee = require('@notifee/react-native');
-    // } catch (e) {
-    //   notifee = undefined;
-    // }
-console.log(notifee)
     if (notifee) {
       try {
-        // const {AndroidImportance} = notifee;
         await notifee.createChannel({
           id: 'default',
           name: 'Default Channel',
@@ -75,8 +65,6 @@ console.log(notifee)
         console.warn('Failed to display notifee notification', err);
       }
     } else {
-      // Fallback: show an in-app alert so the user sees something while
-      // notifee is not installed. Recommend installing notifee for banners.
       Alert.alert(
         remoteMessage.notification?.title || 'Notification',
         remoteMessage.notification?.body || '',
@@ -97,3 +85,12 @@ export function removeForegroundListener() {
     _foregroundListenerUnsubscribe = null;
   }
 }
+
+const notificationService = {
+  requestUserPermission,
+  getFCMToken,
+  setupForegroundListener,
+  removeForegroundListener,
+};
+
+export default notificationService;

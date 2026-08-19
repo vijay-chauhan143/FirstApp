@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
 import RootNavigator from './src/navigation/RootNavigator';
+import {store} from './src/redux/store';
 
 // foreground listener moved to notificationService; notifee used conditionally there
 
@@ -32,7 +34,9 @@ function App() {
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
         <StatusBar barStyle="dark-content" />
-        <RootNavigator />
+        <Provider store={store}>
+          <RootNavigator />
+        </Provider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

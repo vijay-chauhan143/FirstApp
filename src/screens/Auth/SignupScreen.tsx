@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/AuthNavigator';
-import AppButton from '../../components/AppButton';
+import AppButton from '../../components/Button/AppButton';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Signup'>;
 

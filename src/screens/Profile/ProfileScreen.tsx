@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { BottomTabParamList } from '../../navigation/BottomTabNavigator';
-import AppButton from '../../components/AppButton';
+import AppButton from '../../components/Button/AppButton';
 
 type Props = BottomTabScreenProps<BottomTabParamList, 'Profile'>;
 
